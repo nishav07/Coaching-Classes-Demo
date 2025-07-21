@@ -63,6 +63,7 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -219,7 +220,7 @@ body {
 
 /* Hero Section */
 .hero {
-  min-height: 100vh;
+  min-height:calc(100vh - 80px);
   display: flex;
   align-items: center;
   position: relative;
@@ -303,6 +304,13 @@ body {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .hero {
+    padding-top: 120px;
+  }
+}
+
 
 .hero-content {
   display: grid;
