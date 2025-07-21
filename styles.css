@@ -441,6 +441,91 @@ body {
   to { transform: rotateY(360deg) rotateX(360deg); }
 }
 
+.hero-3d-element {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-3d-svg {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  filter: drop-shadow(0 10px 30px rgba(0, 212, 255, 0.3));
+  animation: float3D 6s ease-in-out infinite;
+}
+
+@keyframes float3D {
+  0%, 100% { 
+    transform: translateY(0px) rotateX(0deg) rotateY(0deg); 
+  }
+  33% { 
+    transform: translateY(-15px) rotateX(5deg) rotateY(5deg); 
+  }
+  66% { 
+    transform: translateY(10px) rotateX(-3deg) rotateY(-3deg); 
+  }
+}
+
+.floating-elements {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.float-element {
+  position: absolute;
+  font-size: 2rem;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  animation: floatAround 8s ease-in-out infinite;
+}
+
+.element-1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.element-2 {
+  top: 15%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.element-3 {
+  bottom: 25%;
+  left: 15%;
+  animation-delay: 4s;
+}
+
+.element-4 {
+  bottom: 20%;
+  right: 10%;
+  animation-delay: 6s;
+}
+
+@keyframes floatAround {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 0.7;
+  }
+  25% { 
+    transform: translate(20px, -15px) scale(1.1) rotate(90deg);
+    opacity: 1;
+  }
+  50% { 
+    transform: translate(-10px, -25px) scale(0.9) rotate(180deg);
+    opacity: 0.8;
+  }
+  75% { 
+    transform: translate(-20px, 10px) scale(1.2) rotate(270deg);
+    opacity: 0.9;
+  }
+}
+
 .visual-overlay {
   position: absolute;
   inset: 0;

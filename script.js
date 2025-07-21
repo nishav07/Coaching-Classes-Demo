@@ -164,7 +164,7 @@ class AnimationObserver {
     animateCounter(element) {
         const numberElement = element.querySelector('.stat-number');
         const target = parseInt(numberElement.getAttribute('data-target'));
-        const duration = 2000; // 2 seconds
+        const duration = 3000; // 3 seconds for fast animation
         const increment = target / (duration / 16); // 60 FPS
         let current = 0;
         
@@ -187,7 +187,9 @@ class AnimationObserver {
 class ContactForm {
     constructor() {
         this.form = document.getElementById('contact-form');
-        this.init();
+        if (this.form) {
+            this.init();
+        }
     }
     
     init() {
@@ -196,7 +198,7 @@ class ContactForm {
         // Add floating label functionality
         const inputs = this.form.querySelectorAll('input, select, textarea');
         inputs.forEach(input => {
-            input.addEventListener('blur', () => this.validateField(input));
+            input.addEventListener('blur', () => this.validateFormField(input));
             input.addEventListener('input', () => this.clearError(input));
         });
     }
@@ -213,6 +215,13 @@ class ContactForm {
         }
     }
     
+    validateFormField(field) {
+        // Basic field validation for individual fields
+        if (field.hasAttribute('required') && !field.value.trim()) {
+            this.showError(field.name, 'This field is required');
+        }
+    }
+
     validateForm(data) {
         let isValid = true;
         
