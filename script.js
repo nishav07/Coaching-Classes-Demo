@@ -1,4 +1,5 @@
-// Theme Toggle Functionality
+// OOPs based animations 
+
 class ThemeManager {
     constructor() {
         this.themeToggle = document.getElementById('theme-toggle');
@@ -24,9 +25,10 @@ class ThemeManager {
         const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
         this.setTheme(newTheme);
         
-        // Add ripple effect
         this.createRipple();
     }
+
+
     
     createRipple() {
         const ripple = document.createElement('div');
@@ -54,7 +56,8 @@ class ThemeManager {
     }
 }
 
-// Mobile Navigation
+
+
 class MobileNav {
     constructor() {
         this.hamburger = document.getElementById('hamburger');
@@ -67,12 +70,12 @@ class MobileNav {
     init() {
         this.hamburger.addEventListener('click', () => this.toggleMenu());
         
-        // Close menu when clicking on nav links
+
         this.navLinks.forEach(link => {
             link.addEventListener('click', () => this.closeMenu());
         });
         
-        // Close menu when clicking outside
+
         document.addEventListener('click', (e) => {
             if (!this.hamburger.contains(e.target) && !this.navMenu.contains(e.target)) {
                 this.closeMenu();
@@ -84,7 +87,6 @@ class MobileNav {
         this.hamburger.classList.toggle('active');
         this.navMenu.classList.toggle('active');
         
-        // Prevent scrolling when menu is open
         document.body.style.overflow = this.navMenu.classList.contains('active') ? 'hidden' : 'auto';
     }
     
@@ -95,7 +97,7 @@ class MobileNav {
     }
 }
 
-// Smooth Scrolling for Navigation Links
+
 class SmoothScroll {
     constructor() {
         this.navLinks = document.querySelectorAll('.nav-link[href^="#"]');
@@ -122,7 +124,7 @@ class SmoothScroll {
     }
 }
 
-// Intersection Observer for Animations
+
 class AnimationObserver {
     constructor() {
         this.observerOptions = {
@@ -183,7 +185,6 @@ class AnimationObserver {
     }
 }
 
-// Contact Form Handler
 class ContactForm {
     constructor() {
         this.form = document.getElementById('contact-form');
@@ -195,7 +196,6 @@ class ContactForm {
     init() {
         this.form.addEventListener('submit', (e) => this.handleSubmit(e));
         
-        // Add floating label functionality
         const inputs = this.form.querySelectorAll('input, select, textarea');
         inputs.forEach(input => {
             input.addEventListener('blur', () => this.validateFormField(input));
@@ -209,14 +209,12 @@ class ContactForm {
         const formData = new FormData(this.form);
         const data = Object.fromEntries(formData);
         
-        // Validate form
         if (this.validateForm(data)) {
             this.submitForm(data);
         }
     }
     
     validateFormField(field) {
-        // Basic field validation for individual fields
         if (field.hasAttribute('required') && !field.value.trim()) {
             this.showError(field.name, 'This field is required');
         }
@@ -225,7 +223,6 @@ class ContactForm {
     validateForm(data) {
         let isValid = true;
         
-        // Validate required fields
         const requiredFields = ['name', 'email', 'phone', 'course'];
         requiredFields.forEach(field => {
             if (!data[field] || data[field].trim() === '') {
@@ -234,13 +231,13 @@ class ContactForm {
             }
         });
         
-        // Validate email
+        
         if (data.email && !this.isValidEmail(data.email)) {
             this.showError('email', 'Please enter a valid email address');
             isValid = false;
         }
         
-        // Validate phone
+       
         if (data.phone && !this.isValidPhone(data.phone)) {
             this.showError('phone', 'Please enter a valid phone number');
             isValid = false;
@@ -263,13 +260,11 @@ class ContactForm {
         const field = this.form.querySelector(`[name="${fieldName}"]`);
         const formGroup = field.closest('.form-group');
         
-        // Remove existing error
-        this.clearError(field);
         
-        // Add error styling
+        this.clearError(field);
         field.style.borderBottomColor = 'var(--accent-color)';
         
-        // Add error message
+        
         const errorElement = document.createElement('div');
         errorElement.className = 'error-message';
         errorElement.textContent = message;
