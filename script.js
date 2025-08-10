@@ -56,12 +56,7 @@ class ThemeManager {
     }
 }
 
-class addCourse {
-    constructor() {
-        this.card;
-        this.content;
-    }
-}
+
 
 class MobileNav {
     constructor() {
