@@ -56,7 +56,12 @@ class ThemeManager {
     }
 }
 
-
+class addCourse {
+    constructor() {
+        this.card;
+        this.content;
+    }
+}
 
 class MobileNav {
     constructor() {
@@ -264,7 +269,7 @@ class ContactForm {
         this.clearError(field);
         field.style.borderBottomColor = 'var(--accent-color)';
         
-        
+
         const errorElement = document.createElement('div');
         errorElement.className = 'error-message';
         errorElement.textContent = message;
